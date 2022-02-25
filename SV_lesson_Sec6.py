@@ -83,6 +83,3 @@
 # print(sys.path)
 print('################')
 
-import config
-
-print(__name__)

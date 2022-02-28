@@ -56,19 +56,19 @@ import string
 # with open('design/email_template.txt') as f:
 #     t = string.Template(f.read())
 # contents = t.substitute(name= 'Mike', contents = 'How are you?')
-# print(contents)
-
-# import csv
-# print('### CSV書き込み読み込み##############')
-# with open('test.csv','w') as csv_file:
-#     fieldnames = ['Name','Count']
-#     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-#     writer.writeheader()
-#     writer.writerow({'Name':'A', 'Count':1})
-#     writer.writerow({'Name': 'B', 'Count': 2})
+# # print(contents)
 #
-# with open('test.csv', 'r') as csv_file:
-#     reader = csv.DictReader(csv_file)
+# # import csv
+# # print('### CSV書き込み読み込み##############')
+# # with open('test.csv','w') as csv_file:
+# #     fieldnames = ['Name','Count']
+# #     writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+# #     writer.writeheader()
+# #     writer.writerow({'Name':'A', 'Count':1})
+# #     writer.writerow({'Name': 'B', 'Count': 2})
+# #
+# # with open('test.csv', 'r') as csv_file:
+# #     reader = csv.DictReader(csv_file)
 #     for row in reader:
 #         print(row['Name'], row['Count'])
 
@@ -102,5 +102,21 @@ import shutil
 # shutil.copy('test_dir/test_dir2/empty.txt',
 #                   'test_dir/test_dir2/empty2.txt')
 # print(glob.glob('test_dir/test_dir2/*'))
+# shutil.rmtree('test_dir') # 指定ディレクトリをすべて削除する
 
-shutil.rmtree('test_dir') # 指定ディレクトリをすべて削除する
+# print('### ファイル操作##############')
+# import tarfile
+#
+# with tarfile.open('test.tar.gz', 'w:gz') as tr:
+#     tr.add('test_dir')
+#
+# with tarfile.open('test.tar.gz','r:gz') as tr:
+#         tr.extractall(path='test_dir')
+
+
+# import zipfile
+#
+# with zipfile.ZipFile('test.zip','w') as z:
+#     z.write('test_dir')
+#     z.write('test_dir/test.txt')
+

@@ -79,27 +79,42 @@ import configparser
 #     'status': 'fail',
 #     'message': 'API call is failed',
 # })
+#
+# print('**********hotmailへの送信方法**********')
+# from email import message
+#
+# import smtplib
+#
+# smtp_host = 'smtp.live.com'
+# smtp_port = 587
+# from_email = 'xxxx@hotmail.com'
+#
+# fto_email = config.to_email
+#
+# msg = message.EmailMessage()
+# msg.set_content('Test email')
+# msg['Subject'] = 'test email sub'
+# msg['From'] = from_email
+# msg['To'] = fto_email
+#
+# server = smtplib.SMTP(smtp_host,smtp_port)
+# server.ehlo()
+# server.starttls()
+# server.ehlo()
+# server.login(username,password)
+# server.send_message()
+# server.quit()
 
-print('**********hotmailへの送信方法**********')
-from email import message
-import smtplib
+from optparse import OptionParser
 
-smtp_host = 'smtp.live.com'
-smtp_port = 587
-from_email = 'xxxx@hotmail.com'
+def main():
+    usage = 'usage:%prog [options] arg1 arg2'
+    parser = OptionParser(usage=usage)
+    parser .add_options('-f','--file',action='store',type='string',
+                        dest='filename', help='File name')
+    options, args = parser.parse_args()
+    print(options)
+    print(args)
 
-fto_email = config.to_email
-
-msg = message.EmailMessage()
-msg.set_content('Test email')
-msg['Subject'] = 'test email sub'
-msg['From'] = from_email
-msg['To'] = fto_email
-
-server = smtplib.SMTP(smtp_host,smtp_port)
-server.ehlo()
-server.starttls()
-server.ehlo()
-server.login(username,password)
-server.send_message()
-server.quit()
+if __name__ == '__main__':
+    main()

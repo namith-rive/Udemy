@@ -83,7 +83,6 @@ class Application(tk.Frame):
                   command=self.equals).grid(row=4, column=4, columnspan=2)
 
 
-
 root = tk.Tk()
 app = Application(master=root)
 app.mainloop()

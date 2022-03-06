@@ -4,15 +4,15 @@ import random
 from Crypto.Cipher import AES
 from  Crypto.PublicKey import RSA
 
-print(AES.block_size)
-print(string.ascii_letters)
+#print(AES.block_size)
+#print(string.ascii_letters)
 key = ''.join(
      random.choice(string.ascii_letters) for _ in range(AES.block_size))
-print(key)
+#print(key)
 
 iv = ''.join(
      random.choice(string.ascii_letters) for _ in range(AES.block_size))
-print(iv)
+#print(iv)
 
 plaintext = 'hello_world'
 cipher = AES.new(key, AES.MODE_CBC,iv)
@@ -29,3 +29,8 @@ print(cipher_text)
 # print(len(plaintext) )
 # print( chr(padding_length) )
 # print(plaintext)
+
+cipher2 = AES.new(key, AES.MODE_CBC, iv)
+decrypted_text = cipher2.decrypt(cipher_text)
+print(decrypted_text[-1])
+print(decrypted_text[:-decrypted_text[-1]])

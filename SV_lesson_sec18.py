@@ -71,22 +71,69 @@ import contextlib
 #
 # with contextlib.suppress(FileNotFoundError):
 #     os.remove('somefile.tmp')
-import logging
+# import logging
+#
+# import sys
+#
+# # x= input('Enter:')
+# # print(x)
+#
+# # for line in sys.stdin:
+# #     print(line)
+#
+# # print('hello')
+# # sys.stdout.write('hello')
+#
+# # logging.error('Error')
+# # sys.stderr.write('Error!')
+# with open('stdout.log','w') as f:
+#     with contextlib.redirect_stdout(f):
+#         help(sys.stdout)
+#
 
-import sys
+# import contextlib
+#
+# def is_ok_job():
+#     try:
+#         print('do something')
+#         return True
+#     except Exception:
+#         return False
+# def cleanup():
+#     print('clean up')
+#
+# is_ok = is_ok_job()
+# print('more task')
+# if not is_ok:
+#     cleanup()
+#
+# import io
+#
+# f=io.StringIO()
+# f.write('string io test')
+# f.seek(0)
+# print(f.read())
 
-# x= input('Enter:')
-# print(x)
+import collections
 
-# for line in sys.stdin:
-#     print(line)
+a = {'a':'a','c':'c','num':0}
+b = {'b':'b','c':'cc'}
+c = {'b':'bbb','c':'ccc'}
+# print(a)
+# a.update(b)
+# print(a)
+# a.update(c)
+# print(a)
 
-# print('hello')
-# sys.stdout.write('hello')
-
-# logging.error('Error')
-# sys.stderr.write('Error!')
-with open('stdout.log','w') as f:
-    with contextlib.redirect_stdout(f):
-        help(sys.stdout)
-
+m = collections.ChainMap(a,b,c)
+print(m)
+print('######')
+print(m.maps)
+print('######')
+m.maps.reverse()
+print(m.maps)
+print('######')
+m.maps.insert(0, {'c':'cccccc'})
+print(m.maps)
+print('######')
+print(m['c'])

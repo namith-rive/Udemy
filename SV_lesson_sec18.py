@@ -114,26 +114,71 @@ import contextlib
 # f.seek(0)
 # print(f.read())
 
+# import collections
+#
+# a = {'a':'a','c':'c','num':0}
+# b = {'b':'b','c':'cc'}
+# c = {'b':'bbb','c':'ccc'}
+# # print(a)
+# # a.update(b)
+# # print(a)
+# # a.update(c)
+# # print(a)
+#
+# m = collections.ChainMap(a,b,c)
+# print(m)
+# print('######')
+# print(m.maps)
+# print('######')
+# m.maps.reverse()
+# print(m.maps)
+# print('######')
+# m.maps.insert(0, {'c':'cccccc'})
+# print(m.maps)
+# print('######')
+# print(m['c'])
+
 import collections
 
-a = {'a':'a','c':'c','num':0}
-b = {'b':'b','c':'cc'}
-c = {'b':'bbb','c':'ccc'}
-# print(a)
-# a.update(b)
-# print(a)
-# a.update(c)
-# print(a)
+d = {}
+l = ['a','a','a','b','b','c']
+for word in l:
+    if word not in d:
+        d[word] = 0
+    d[word] += 1
+print(d)
 
-m = collections.ChainMap(a,b,c)
-print(m)
-print('######')
-print(m.maps)
-print('######')
-m.maps.reverse()
-print(m.maps)
-print('######')
-m.maps.insert(0, {'c':'cccccc'})
-print(m.maps)
-print('######')
-print(m['c'])
+d = {}
+l = ['a','a','a','b','b','c']
+for word in l:
+    d.setdefault(word, 0)
+    d[word] += 1
+print(d)
+
+d = collections.defaultdict(int)
+l = ['a','a','a','b','b','c']
+for word in l :
+    d[word] += 1
+print(d)
+
+d = collections.defaultdict(set)
+s = [('red',1) , ('blue', 2), ('red','3'), ('blue', 4),
+        ('red',1) , ('blue', 4)]
+print("######################")
+
+for k,v in s:
+    d[k].add(v)
+print(d)
+
+c= collections.Counter()
+for word in l:
+    c[word] += 1
+print(c)
+print(c.most_common(3))
+print(sum(c.values()))
+print("######################")
+
+import re
+with open('lessen.py') as f:
+    words = re.findall(r'\w+', f.read().lower())
+    print(collections.Counter(words).most_common(5))

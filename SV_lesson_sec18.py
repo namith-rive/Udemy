@@ -238,25 +238,46 @@ import collections
 #
 # p._replace(x = 500)
 # print(p)
+#
+# import re
+# """
+# match   文字列の先頭で正規表現とマッチするか判定
+# search  文字列を操作して、正規表現がどこにマッチするか調べる
+# findall   正規表現にマッチする部分文字列をすべて探し出しリストとして返す
+# finditer 重複しないマッチオブジェクトのイテレータを返す
+# """
+# m = re.match('a.c','abc')
+# print(m)
+# print(m.group())
+# m = re.search('a.c','test abc test')
+# m = re.match('[a-c]', 'x')
+# m = re.match('[a-zA-Z]', 'x')
+# m = re.match('[\w]', '@')
+# print(m)
+#
+# print('###### format ######')
+# f = '{:+f}{:+f}'.format(3.14,-3.14)
+# f = '{:,}'.format(123456789)
+# print(f)
+# print(int(100),hex(100),oct(100))
 
 import re
-"""
-match   文字列の先頭で正規表現とマッチするか判定
-search  文字列を操作して、正規表現がどこにマッチするか調べる
-findall   正規表現にマッチする部分文字列をすべて探し出しリストとして返す
-finditer 重複しないマッチオブジェクトのイテレータを返す
-"""
-m = re.match('a.c','abc')
-print(m)
-print(m.group())
-m = re.search('a.c','test abc test')
-m = re.match('[a-c]', 'x')
-m = re.match('[a-zA-Z]', 'x')
-m = re.match('[\w]', '@')
-print(m)
+#
+# s = ('arn:aws:cloudformation:bha:rhgarghaoirghauireog:stack/'
+#      'mystack-mynestendstack-sgg/khgareuga-gaeaga-gaergaeg-gaweaerase')
+#
+# #m = re.match(r' arn:aws:cloudformation:[\w-]+:[\d]+:stack/[\w-]+/[\w-]+'+, s)
+# m = re.match(r'arn:aws:cloudformation:(?P<region>[\w-]+):[\d]+:stack/[\w-]+/[\w-]+'+, s)
+#
+# if m:
+#     print(m.group('region'))
+# else:
+#     raise Exception
+#
+# print(m)
 
-print('###### format ######')
-f = '{:+f}{:+f}'.format(3.14,-3.14)
-f = '{:,}'.format(123456789)
-print(f)
-print(int(100),hex(100),oct(100))
+s = 'My name is ... Mike'
+print(s.split())
+
+p = re.compile(r'\W+')
+print(p.split(s))

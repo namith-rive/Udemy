@@ -276,8 +276,52 @@ import re
 #
 # print(m)
 
-s = 'My name is ... Mike'
-print(s.split())
+# s = 'My name is ... Mike'
+# print(s.split())
+#
+# p = re.compile(r'\W+')
+# print(p.split(s))
 
-p = re.compile(r'\W+')
-print(p.split(s))
+# p = re.compile('(blue|white|red)')
+# print(p.sub('color','blue socks and red shoes'))
+# print(p.subn('color','blue socks and red shoes'))
+
+#
+# def hexrepl(match):
+#     value = int(match.group())
+#     return hex(value)
+#
+# p = re.compile(r'\d')
+# print(p.sub(hexrepl,'12345 55 11 test test2'))
+
+# import re
+# # Greedy
+#
+# s='<html><head><title>Title</title></head></html>'
+#
+# print(re.match('<.*>',s))
+# print(re.match('<.*?>',s))
+
+#repr representation 表示
+# print('s')
+# print(str('s'))
+# print(repr('s'))
+#
+# import datetime
+# d = datetime.datetime.now()
+# print(d)
+# print(str(d))
+# print(repr(d))
+
+print('###### pprint ######')
+import json
+import pprint
+l = ['apple','orange','banana','peach','mango']
+l.insert(0,l[:])
+l.insert(0,l[:])
+l.insert(0,l[:])
+l.insert(0,l[:])
+# print(l)
+pp = pprint.PrettyPrinter(
+    indent = 4, width = 40, compact=True, depth=3)
+pp.pprint(l)

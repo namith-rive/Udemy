@@ -206,14 +206,14 @@ for i in range(3):
 #     print('list                = {}'.format(l.pop()))
 #     print('deque           = {}'.format(d.popleft()))
 #     print()
-
-print(d)
-d.extendleft('x')
-d.extend('y')
-print(d)
-d.clear()
-print(d)
-# d.rotate()
+#
+# print(d)
+# d.extendleft('x')
+# d.extend('y')
+# print(d)
+# d.clear()
+# print(d)
+# # d.rotate()
 # print(d[1])
 # print(d[-1])
 
@@ -313,15 +313,172 @@ import re
 # print(str(d))
 # print(repr(d))
 
-print('###### pprint ######')
-import json
-import pprint
-l = ['apple','orange','banana','peach','mango']
-l.insert(0,l[:])
-l.insert(0,l[:])
-l.insert(0,l[:])
-l.insert(0,l[:])
-# print(l)
-pp = pprint.PrettyPrinter(
-    indent = 4, width = 40, compact=True, depth=3)
-pp.pprint(l)
+# print('###### pprint ######')
+# import json
+# import pprint
+# l = ['apple','orange','banana','peach','mango']
+# l.insert(0,l[:])
+# l.insert(0,l[:])
+# l.insert(0,l[:])
+# l.insert(0,l[:])
+# # print(l)
+# pp = pprint.PrettyPrinter(
+#     indent = 4, width = 40, compact=True, depth=3)
+# pp.pprint(l)
+# 論理和
+# print( 0|0)
+# print( 0|1)
+# print( 1|0)
+# print( 1|1)
+#
+# # 論理積
+# print( 192 & 255)
+# print( 0 & 1)
+# print( 1 & 0)
+# print( 1 & 1)
+#
+# # 排他的論理和
+# print('排他的論理和')
+# print( 0 ^ 0)
+# print( 0 ^ 1)
+# print( 1 ^ 0)
+# print( 1 ^ 1)
+#
+# print('反転')
+# print( bin(0))
+# print( bin(~0))
+# print( bin(1))
+# print( bin(~1))
+# print( bin(~~1))
+#
+# print('シフト')
+# print( bin(1 << 0))
+# print( bin(1 << 1))
+# print( bin(1 << 2))
+# print( bin(5 << 1))
+#
+# # 論理積
+# print( 192 & 255)
+# print( 168 & 255)
+# print( 192 | 0)
+# print( 168 | 0)
+# print( 10 ^255)
+
+import enum
+
+# db = {
+#     # 'stack1':'active',
+#     # 'stack2':'inactive'
+#     'stack1': 2,
+#     'stack2': 2,
+# }
+# if db['stack1'] == 'active':
+#     print('shutdown')
+# elif db['stack2'] == 'inactive':
+#     print('terminate')
+# STATUS_ACTIVE =1
+# STATUS_INACTIVE =2
+# if db['stack1'] == STATUS_ACTIVE:
+#     print('shutdown')
+# elif db['stack2'] == STATUS_INACTIVE:
+#     print('terminate')
+
+print('#################')
+# class Status(enum.Enum):
+#     ACTIVE = 1
+#     RENAME_ACTIVE = 1
+#     INACTIVE = 2
+#     RUNNING = 3
+#
+# if Status(db['stack1']) == Status.ACTIVE:
+#     print('shutdown')
+# elif Status(db['stack2']) == Status.INACTIVE:
+#     print('terminate')
+#
+# # print(Status.ACTIVE)
+# print(repr(Status.ACTIVE))
+# print(Status.ACTIVE.name)
+# print(Status.ACTIVE.value)
+
+# for s in Status:
+#     print(s)
+#     print(type(s))
+# print('#################')
+# print((Status(1)))
+#
+# print('#################')
+
+# class Perm(enum.IntFlag):
+#     R =4
+#     W = 2
+#     X = 1
+#
+# print(Perm.R | Perm.W)
+# print(repr(Perm.R | Perm.W | Perm.X))
+
+
+# def memorize(f):
+#     memo = {}
+#     def _wrapper(n):
+#         if n not in memo:
+#             memo[n] = f(n)
+#         return memo[n]
+#     return _wrapper
+#
+# import functools
+#
+# # @memorize
+# @functools.lru_cache()
+# def long_func(n):
+#     r = 0
+#     for i in range(1000000):
+#         r += n * i
+#     return r
+#
+# for i in range(10):
+#     print(long_func(i))
+#
+# print(long_func.cache_info())
+#
+# print('next run')
+# for i in range(10):
+#     print(long_func(i))
+#
+# print(long_func.cache_info())
+
+print('#################')
+#
+# import functools
+#
+# def d(f):
+#     def w():
+#         """ Wrapper docstring"""
+#         return f()
+#     return w
+# @d
+# def example():
+#     """ Example docstring"""
+#     print('example')
+#
+# #example()
+# print(example.__doc__)
+#
+# help(example)
+print('### functools.partioal #############')
+import functools
+def f(x, y):
+    return x+y
+
+def task(f):
+    print('start')
+    print(f())
+
+# def outer(x, y):
+#     def inner():
+#         return x+y
+#     return inner
+
+# f = outer(10,20)
+p = functools.partial(f, 10, 20)
+task(p)
+#task(lambda x,y: x+y)
